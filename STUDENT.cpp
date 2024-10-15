@@ -87,6 +87,25 @@ void Student::displayOneStudent(int numTests) const
 	cout << "\nAverage Score: " << fixed << setprecision(2) << average
 		<< "\nGrade: " << grade << "\n";
 }
+int Student::getStudentCount(int numStudents, char grade) const
+{
+	int count = 0;
+	for (int i = 0; i < numStudents; ++i) {
+		if (this->grade == grade) {
+			count++;
+		}
+	}
+	return count;
+}
+Student* Student::getBestStudent(int numStudents) {
+	Student* bestStudent = this;
+	for (int i = 1; i < numStudents; ++i) {
+		if (this->average > bestStudent->average) {
+			bestStudent = this;
+		}
+	}
+	return bestStudent;
+}
 
 void Student::displayStudents(int numStudents, int numTests) const
 {
